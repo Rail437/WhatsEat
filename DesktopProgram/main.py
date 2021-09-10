@@ -20,6 +20,7 @@ from DesktopProgram.utils.decorators import Log
 from DesktopProgram.utils.utils import send_message, load_configs, get_message
 from utils.errors import ReqFieldMissingError, ServerError, IncorrectDataRecivedError
 from PyQt5 import QtCore, QtGui, QtWidgets
+from recipe import RecipeWidgets
 
 CONFIGS = dict()
 SERVER_LOGGER = logging.getLogger('client')
@@ -126,162 +127,9 @@ class Ui_MainWindow(object):
         self.search_recipe.setText(_translate("MainWindow", "Подобрать рецепт"))
 
     def _getting_recipes(self):
-        self._response_processing(self._get_recipes())
-
-
-    def _get_recipes(self):
-        string_product = self.input_product.text()
-        self.input_product.setText('')
-        # здесь будет запрос на сервер
-        # получение ответа
-        # декодирование полученого ответа в словарь
-        answer_dict = {
-            'recipe_1': {'image': 'sample/img/image-recipe.jpg',
-            'name_recipe': 'Лазанья классическая с мясом',
-            'ingredients': {
-                'ingredient_1': {
-                    'Мясной фарш': '600 г.'
-                },
-                'ingredient_2': {
-                    'Соус болоньезе': '600 г.'
-                },
-                'ingredient_3': {
-                    'Сливочное масло': '60 г.'
-                },
-                'ingredient_4': {
-                    'Пшеничная мука': '2,5 ст.л.'
-                },
-                'ingredient_5': {
-                    'Оливковое масло': '2 ст.л.'
-                },
-                'ingredient_6': {
-                    'Молоко': '750 мл.'
-                },
-                'ingredient_7': {
-                    'Готовые сухие листы лазаньи': '10 шт.'
-                },
-                'ingredient_8': {
-                    'Твердый сыр': '500 г.'
-                }
-            }},
-            'recipe_2': {'image': 'sample/img/image-recipe.jpg',
-                         'name_recipe': 'Лазанья классическая с мясом',
-                         'ingredients': {
-                             'ingredient_1': {
-                                 'Мясной фарш': '600 г.'
-                             },
-                             'ingredient_2': {
-                                 'Соус болоньезе': '600 г.'
-                             },
-                             'ingredient_3': {
-                                 'Сливочное масло': '60 г.'
-                             },
-                             'ingredient_4': {
-                                 'Пшеничная мука': '2,5 ст.л.'
-                             },
-                             'ingredient_5': {
-                                 'Оливковое масло': '2 ст.л.'
-                             },
-                             'ingredient_6': {
-                                 'Молоко': '750 мл.'
-                             },
-                             'ingredient_7': {
-                                 'Готовые сухие листы лазаньи': '10 шт.'
-                             },
-                             'ingredient_8': {
-                                 'Твердый сыр': '500 г.'
-                             }
-                         }},
-            'recipe_3': {'image': 'sample/img/image-recipe.jpg',
-                         'name_recipe': 'Лазанья классическая с мясом',
-                         'ingredients': {
-                             'ingredient_1': {
-                                 'Мясной фарш': '600 г.'
-                             },
-                             'ingredient_2': {
-                                 'Соус болоньезе': '600 г.'
-                             },
-                             'ingredient_3': {
-                                 'Сливочное масло': '60 г.'
-                             },
-                             'ingredient_4': {
-                                 'Пшеничная мука': '2,5 ст.л.'
-                             },
-                             'ingredient_5': {
-                                 'Оливковое масло': '2 ст.л.'
-                             },
-                             'ingredient_6': {
-                                 'Молоко': '750 мл.'
-                             },
-                             'ingredient_7': {
-                                 'Готовые сухие листы лазаньи': '10 шт.'
-                             },
-                             'ingredient_8': {
-                                 'Твердый сыр': '500 г.'
-                             }
-                         }},
-            'recipe_4': {'image': 'sample/img/image-recipe.jpg',
-                         'name_recipe': 'Лазанья классическая с мясом',
-                         'ingredients': {
-                             'ingredient_1': {
-                                 'Мясной фарш': '600 г.'
-                             },
-                             'ingredient_2': {
-                                 'Соус болоньезе': '600 г.'
-                             },
-                             'ingredient_3': {
-                                 'Сливочное масло': '60 г.'
-                             },
-                             'ingredient_4': {
-                                 'Пшеничная мука': '2,5 ст.л.'
-                             },
-                             'ingredient_5': {
-                                 'Оливковое масло': '2 ст.л.'
-                             },
-                             'ingredient_6': {
-                                 'Молоко': '750 мл.'
-                             },
-                             'ingredient_7': {
-                                 'Готовые сухие листы лазаньи': '10 шт.'
-                             },
-                             'ingredient_8': {
-                                 'Твердый сыр': '500 г.'
-                             }
-                         }},
-        }
-
-        print(string_product)
-        return answer_dict
-
-    # def _response_processing(self, list_recipes):
-    #     for i in list_recipes:
-    #         recipe_dict = list_recipes[i]
-    #         self.recipe_widget = RecipeWidget(self.list_recipes)
-    #
-    #
-    #
-    #
-    #
-    #         self.recipe_widget.setFixedWidth(350)
-    #         self.recipe_image = QtWidgets.QLabel(self.recipe_widget)
-    #         self.recipe_image.setPixmap(recipe_dict['image'])
-    #         self.recipe_image.setFixedWidth(300)
-    #         self.recipe_name = QtWidgets.QLabel(self.recipe_widget)
-    #         self.recipe_name.setFixedWidth(300)
-    #         self.list_ingredients = QtWidgets.QListWidget
-    #         for ingredient in recipe_dict['ingredients']:
-    #             self.list_ingredients.addItem()
-    #         print(recipe_dict['ingredients'])
-    #
-    #         print(recipe_dict)
-
-
-# class RecipeWidget(QtWidgets):
-#     def __init__(self, *args, **kwargs):
-#         super(RecipeWidget, self).__init__(self, *args, **kwargs)
-#         self.recipe_image = QtWidgets.QLabel(self)
-#         self.recipe_name = QtWidgets.QLabel(self)
-#         self.recipe_ingredients = QtWidgets.QListWidget(self)
+        print("start _getting_recipes")
+        self.widget = RecipeWidgets()
+        print('finish _getting_recipes')
 
 
 
