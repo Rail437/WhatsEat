@@ -5,7 +5,7 @@ create table hibernate_sequence
 
 CREATE TABLE clients
 (
-    id       uuid,
+    id       uuid not null,
     name     varchar(64) not null,
     login    varchar(64) not null,
     password varchar(64) not null,
