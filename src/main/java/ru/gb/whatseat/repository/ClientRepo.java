@@ -8,4 +8,5 @@ import java.util.UUID;
 
 public interface ClientRepo extends CrudRepository<Client, UUID>, JpaRepository<Client, UUID> {
     Client findByLogin(String login);
+    Client findByLoginAndPassword(String login, String password);
 }

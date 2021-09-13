@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.gb.whatseat.model.Client;
 import ru.gb.whatseat.service.ClientService;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -31,12 +30,12 @@ public class ClientController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<Client>> read() {
-        final List<Client> clients = clientService.readAll();
+    public ResponseEntity<Client> login(@RequestBody Client client) {
+        final Client clients = clientService.findByLoginAndPass(client);
 
-        return clients != null &&  !clients.isEmpty()
+        return clients != null
                 ? new ResponseEntity<>(clients, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                : new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     /**

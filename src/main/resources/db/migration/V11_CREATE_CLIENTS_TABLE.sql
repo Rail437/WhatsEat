@@ -1,8 +1,3 @@
-create table hibernate_sequence
-(
-    next_val bigint
-);
-
 CREATE TABLE clients
 (
     id       uuid not null,

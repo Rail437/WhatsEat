@@ -27,9 +27,9 @@ public class ClientService{
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    public List<Client> readAll() {
+    public Client findByLoginAndPass(Client client) {
         //return new ArrayList<>(CLIENT_UUID_REPOSITORY_MAP.values());
-        return new ArrayList<Client>((Collection<? extends Client>) clientRepo.findAll());
+        return clientRepo.findByLoginAndPassword(client.getLogin(),client.getPassword());
     }
 
     public Optional<Client> read(UUID id) {
