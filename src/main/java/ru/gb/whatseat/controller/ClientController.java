@@ -45,7 +45,7 @@ public class ClientController {
      */
     @GetMapping(value = "/{id}")
     public ResponseEntity<Client> read(@PathVariable(name = "id") UUID id) {
-        final Client client =  clientService.read(id).get();
+        final Client client =  clientService.read(id);
 
         return client != null
                 ? new ResponseEntity<>(client, HttpStatus.OK)
@@ -54,13 +54,12 @@ public class ClientController {
 
     /**
      *Обновление клиентов по UUID идентификатору
-     * @param id
      * @param client
      * @return
      */
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<?> update(@PathVariable(name = "id") UUID id, @RequestBody Client client) {
-        final boolean updated = clientService.update(client, id);
+    @PutMapping()
+    public ResponseEntity<?> update(@RequestBody Client client) {
+        final boolean updated = clientService.update(client);
 
         return updated
                 ? new ResponseEntity<>(HttpStatus.OK)
@@ -73,8 +72,8 @@ public class ClientController {
      * @return
      */
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<?> delete(@PathVariable(name = "id") UUID id) {
-        final boolean deleted = clientService.delete(id);
+    public ResponseEntity<?> delete(@PathVariable(name = "id") UUID id, @RequestBody Client client) {
+        final boolean deleted = clientService.delete(id, client);
 
         return deleted
                 ? new ResponseEntity<>(HttpStatus.OK)
