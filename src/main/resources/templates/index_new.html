@@ -72,31 +72,35 @@
                     <div class="flex-container">
                         <div class="search-panel">
                             <form method="get">
-                                <label class="search__label" for="search__input">Введите названия продуктов которые имеются у вас:</label>
+                                <label class="search__label" for="search__input">Поиск:</label>
                                 <div class="search">
-                                    <input type="text" id="search__input" name="products">
+                                    <input type="text" id="search__input" name="products" placeholder="Сыр, паста, оливковое масло...">
                                     <button type="submit" class="btn-primary">Подобрать рецепт</button>
                                 </div>
                             </form>
                         </div>
                         <div class="block-recipes">
-                            <div  th:each="recipe : ${recipes}" class="recipe">
-                                <div class="recipe__image">
-                                    <img src="sample/img/image-recipe.jpg" alt="Image recipe">
-                                </div>
-                                <div class="recipe__name" th:text="${recipe.getDish().getTitle()}">
-                                    Лазанья классическая с мясом
-                                </div>
-                                <div class="recipe__ingredients" th:text="${recipe.getDish().getDescription()}">
-                                    <span class="ingredient_quantity"><span class="ingredient">Мясной фарш</span><span class="quantity">600 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Соус болоньезе</span><span class="quantity">600 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Сливочное масло</span><span class="quantity">60 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Пшеничная мука</span><span class="quantity">2,5 ст.л.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Оливковое масло</span><span class="quantity">2 ст.л.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Молоко</span><span class="quantity">750 мл</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Готовые сухие листы лазаньи</span><span class="quantity">10 шт.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Твердый сыр</span><span class="quantity">500 г.</span></span>
-                                </div>
+                            <div th:each="recipe : ${recipes}" class="recipe">
+                                    <div class="recipe__image">
+                                        <img src="sample/img/image-recipe.jpg" alt="Image recipe">
+                                    </div>
+                                    <div class="recipe__name" th:text="${recipe.getTitle()}"></div>
+                                <a href="#" th:text="${recipe.getId()}">link</a>
+                                <!--                                <div>-->
+<!--                                    <ul class="recipe__info">-->
+<!--                                        <li class="recipe__list" th:text="${recipe.getProduct().getTitle()}"></li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                                <div class="recipe__ingredients" th:text="${recipe.getDish().getDescription()}">-->
+<!--                                    <span class="ingredient_quantity"><span class="ingredient">Мясной фарш</span><span class="quantity">600 г.</span></span>-->
+<!--                                    <span class="ingredient_quantity"><span class="ingredient">Соус болоньезе</span><span class="quantity">600 г.</span></span>-->
+<!--                                    <span class="ingredient_quantity"><span class="ingredient">Сливочное масло</span><span class="quantity">60 г.</span></span>-->
+<!--                                    <span class="ingredient_quantity"><span class="ingredient">Пшеничная мука</span><span class="quantity">2,5 ст.л.</span></span>-->
+<!--                                    <span class="ingredient_quantity"><span class="ingredient">Оливковое масло</span><span class="quantity">2 ст.л.</span></span>-->
+<!--                                    <span class="ingredient_quantity"><span class="ingredient">Молоко</span><span class="quantity">750 мл</span></span>-->
+<!--                                    <span class="ingredient_quantity"><span class="ingredient">Готовые сухие листы лазаньи</span><span class="quantity">10 шт.</span></span>-->
+<!--                                    <span class="ingredient_quantity"><span class="ingredient">Твердый сыр</span><span class="quantity">500 г.</span></span>-->
+<!--                                </div>-->
                             </div>
                         </div>
                         </div>
