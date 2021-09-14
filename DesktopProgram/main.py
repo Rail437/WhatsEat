@@ -145,13 +145,16 @@ def load_configs():
 
 
 def get_response(address, response):
-    return str(address+response)
+    return str(address + response)
+
 
 def get_address(CONFIG):
     return f'http://{CONFIG["DEFAULT_IP_ADDRESS"]}:{CONFIG["DEFAULT_PORT"]}/whatseat/api/v1/'
 
+
 def get_items_response(items='products'):
     return f'{items}?{items}='
+
 
 def get_search_str(**kwargs):
     pass
@@ -163,6 +166,7 @@ def get_response_server(address, items, search=None):
     else:
         return f'{address}{items}'
 
+
 if __name__ == "__main__":
     # app = QtWidgets.QApplication(sys.argv)
     # MainWindow = QtWidgets.QMainWindow()
@@ -171,7 +175,6 @@ if __name__ == "__main__":
     # MainWindow.show()
     # sys.exit(app.exec_())
 
-
     CONFIG = load_configs()
     ADDRESS_SERVER = get_address(CONFIG)
     session = requests.Session()
@@ -179,4 +182,3 @@ if __name__ == "__main__":
     str_search = 'яйцо куринное, молоко'
     answer_server = session.get(get_response_server(ADDRESS_SERVER, item_response, str_search))
     print(answer_server.json())
-
