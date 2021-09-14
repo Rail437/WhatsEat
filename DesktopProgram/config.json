@@ -1,15 +1,5 @@
 {
   "DEFAULT_IP_ADDRESS": "185.46.8.32",
   "DEFAULT_PORT": 8080,
-  "MAX_CONNECTIONS": 5,
-  "MAX_PACKAGE_LENGTH": 1024,
-  "ENCODING": "utf-8",
-  "ACTION": "action",
-  "TIME": "time",
-  "USER": "user",
-  "ACCOUNT_NAME": "account_name",
-  "PRESENCE": "presence",
-  "RESPONSE": "response",
-  "ERROR": "error",
-  "LOGGING_LEVEL": 10
+  "ENCODING": "utf-8"
 }
