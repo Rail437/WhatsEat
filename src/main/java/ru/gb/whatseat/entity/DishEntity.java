@@ -3,6 +3,7 @@ package ru.gb.whatseat.entity;
 
 import lombok.Data;
 
+import javax.persistence.Table;
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class DishEntity {
     private int diffLevel;
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private DishCategoryEntity dish_category;
 

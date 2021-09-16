@@ -1,4 +1,4 @@
-package ru.gb.whatseat.model;
+package ru.gb.whatseat.parametrs;
 
 
 import lombok.AllArgsConstructor;

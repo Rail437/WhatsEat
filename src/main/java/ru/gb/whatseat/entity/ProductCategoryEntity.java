@@ -17,5 +17,4 @@ public class ProductCategoryEntity {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product_category")
     private List<ProductEntity> products;
-
 }
