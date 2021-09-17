@@ -62,26 +62,26 @@ CREATE TABLE recipes
 
 );
 
-CREATE TABLE users
+CREATE TABLE clients
 (
-    id       uuid not null,
+    client_id       uuid not null,
     name     varchar(64) not null,
     login    varchar(64) not null,
     password varchar(64) not null,
-    PRIMARY KEY (id)
+    PRIMARY KEY (client_id)
 );
 
 CREATE TABLE favorites
 (
     id BIGSERIAL,
     product_id bigint NOT NULL,
-    user_id uuid NOT NULL,
+    client_id uuid NOT NULL,
     CONSTRAINT produck_id_fk FOREIGN KEY (product_id)
         REFERENCES product_entity (id) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE,
-    CONSTRAINT user_id_fk FOREIGN KEY (user_id)
-        REFERENCES users (id) MATCH SIMPLE
+    CONSTRAINT client_id_fk FOREIGN KEY (client_id)
+        REFERENCES clients (id) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE,
 	PRIMARY KEY(id)
