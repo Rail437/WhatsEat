@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS recipes;
 DROP TABLE IF EXISTS favorites;
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS clients;
 DROP TABLE IF EXISTS product_entity;
 DROP TABLE IF EXISTS product_category_entity;
 DROP TABLE IF EXISTS dish_entity;
@@ -81,7 +81,7 @@ CREATE TABLE favorites
         ON UPDATE CASCADE
         ON DELETE CASCADE,
     CONSTRAINT client_id_fk FOREIGN KEY (client_id)
-        REFERENCES clients (id) MATCH SIMPLE
+        REFERENCES clients (client_id) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE,
 	PRIMARY KEY(id)
