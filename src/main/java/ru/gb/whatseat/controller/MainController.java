@@ -19,4 +19,9 @@ public class MainController {
         return "index_new";
     }
 
+    @GetMapping(value = "/reg")
+    public String reg(){
+        return "registrate.html";
+    }
+
 }
