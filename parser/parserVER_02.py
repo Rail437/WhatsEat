@@ -88,7 +88,7 @@ def parse_recipes(urls):
             num, step = i.split('</span>')
             num = num[num.rfind('>') + 1:].strip()
             step = step.strip()
-            new_list2.append(f'<li>{step}')
+            new_list2.append(f'<li>{step}\n')
         value_dict['Способ приготовления'] = new_list2
         dct[title] = value_dict
     print_dict(dct)
