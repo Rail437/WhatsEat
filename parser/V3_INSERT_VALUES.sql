@@ -1,1 +1,0 @@
-INSERT INTO recipes (QUANTITY, dish_id, product_id) VALUES (' 3-5 ст. ложки ','199','401')
