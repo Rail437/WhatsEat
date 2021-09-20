@@ -96,6 +96,7 @@ def parse_recipes(urls):
 
 
 def db_fill(lst, name):
+    dir = '../src/main/resources/db/migration/V3_INSERT_VALUES.sql'
     try:
         # Подключиться к существующей базе данных
         connection = psycopg2.connect(user="postgres",
@@ -107,9 +108,13 @@ def db_fill(lst, name):
 
         cursor = connection.cursor()
 
+
         cursor.execute(f"""SELECT id FROM dish_category_entity WHERE title = '{name}'""")
         if cursor.rowcount <= 0:
             cursor.execute(f"""INSERT INTO dish_category_entity (TITLE) VALUES ('{name}') RETURNING id""")
+            with open(dir, "a") as f:
+                f.write(f"""INSERT INTO dish_category_entity (TITLE) VALUES ('{name}')""")
+
 
         category_id = cursor.fetchone()[0]
         print('category_id =', category_id)
@@ -122,6 +127,8 @@ def db_fill(lst, name):
             dish_img_link = value['Изображение']
             dish_img_path = value['Путь к изображению']
             insert_dish_query = f"""INSERT INTO dish_entity (TITLE, DESCRIPTION, ingredients_list, img_path, DISH_CAT_ID) VALUES ('{dish_title}', '{dish_cooking_method}', '{dish_ingredients}','{dish_img_path}', '{category_id}') RETURNING id"""
+            with open(dir, "a") as f:
+                f.write(f"""INSERT INTO dish_entity (TITLE, DESCRIPTION, ingredients_list, img_path, DISH_CAT_ID) VALUES ('{dish_title}', '{dish_cooking_method}', '{dish_ingredients}','{dish_img_path}', '{category_id}')""")
             print('insert_dish_query =', insert_dish_query)
             cursor.execute(insert_dish_query)
 
@@ -144,6 +151,8 @@ def db_fill(lst, name):
                     else:
                         insert_product_query = f"""INSERT INTO product_entity (TITLE) VALUES ('{product}') RETURNING id"""
                         cursor.execute(insert_product_query)
+                        with open(dir, "a") as f:
+                            f.write(f"""INSERT INTO product_entity (TITLE) VALUES ('{product}')""")
                         product_id = cursor.fetchone()[0]
                 else:
                     product = ing
@@ -158,9 +167,13 @@ def db_fill(lst, name):
                     else:
                         insert_product_query = f"""INSERT INTO product_entity (TITLE) VALUES ('{product}') RETURNING id"""
                         cursor.execute(insert_product_query)
+                        with open(dir, "a") as f:
+                            f.write(f"""INSERT INTO product_entity (TITLE) VALUES ('{product}')""")
                         product_id = cursor.fetchone()[0]
 
                 insert_recipes_query = f"""INSERT INTO recipes (QUANTITY, dish_id, product_id) VALUES ('{quantity}','{dish_id}','{product_id}') RETURNING id"""
+                with open(dir, "a") as f:
+                    f.write(f"""INSERT INTO recipes (QUANTITY, dish_id, product_id) VALUES ('{quantity}','{dish_id}','{product_id}')""")
                 #                 print('insert_product_query =', insert_product_query)
 
                 cursor.execute(insert_recipes_query)

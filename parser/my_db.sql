@@ -1,6 +1,4 @@
 DROP TABLE IF EXISTS recipes;
-DROP TABLE IF EXISTS favorites;
-DROP TABLE IF EXISTS clients;
 DROP TABLE IF EXISTS product_entity;
 DROP TABLE IF EXISTS product_category_entity;
 DROP TABLE IF EXISTS dish_entity;
@@ -62,28 +60,3 @@ CREATE TABLE recipes
 
 );
 
---CREATE TABLE clients
---(
---    client_id       uuid not null,
---    name     varchar(64) not null,
---    login    varchar(64) not null,
---    password varchar(64) not null,
---    PRIMARY KEY (client_id)
---);
-
-CREATE TABLE favorites
-(
-    id BIGSERIAL,
-    product_id bigint NOT NULL,
-    client_id uuid NOT NULL,
-    CONSTRAINT produck_id_fk FOREIGN KEY (product_id)
-        REFERENCES product_entity (id) MATCH SIMPLE
-        ON UPDATE CASCADE
-        ON DELETE CASCADE,
-    CONSTRAINT user_id_fk FOREIGN KEY (user_id)
-        REFERENCES clients (id) MATCH SIMPLE
-        ON UPDATE CASCADE
-        ON DELETE CASCADE,
-	PRIMARY KEY(id)
-
-);
