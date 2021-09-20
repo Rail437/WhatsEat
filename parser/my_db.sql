@@ -62,14 +62,14 @@ CREATE TABLE recipes
 
 );
 
-CREATE TABLE clients
-(
-    client_id       uuid not null,
-    name     varchar(64) not null,
-    login    varchar(64) not null,
-    password varchar(64) not null,
-    PRIMARY KEY (client_id)
-);
+--CREATE TABLE clients
+--(
+--    client_id       uuid not null,
+--    name     varchar(64) not null,
+--    login    varchar(64) not null,
+--    password varchar(64) not null,
+--    PRIMARY KEY (client_id)
+--);
 
 CREATE TABLE favorites
 (
@@ -80,8 +80,8 @@ CREATE TABLE favorites
         REFERENCES product_entity (id) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE,
-    CONSTRAINT client_id_fk FOREIGN KEY (client_id)
-        REFERENCES clients (client_id) MATCH SIMPLE
+    CONSTRAINT user_id_fk FOREIGN KEY (user_id)
+        REFERENCES clients (id) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE,
 	PRIMARY KEY(id)

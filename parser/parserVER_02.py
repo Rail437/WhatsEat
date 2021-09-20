@@ -116,6 +116,7 @@ def db_fill(lst, name):
 
         for key, value in lst.items():
             dish_title = key
+            print(dish_title)
             dish_ingredients = '\n'.join(value['Список ингредиентов'])
             dish_cooking_method = '\n'.join(value['Способ приготовления'])
             dish_img_link = value['Изображение']
@@ -132,13 +133,33 @@ def db_fill(lst, name):
                 num = ing.count(':')
                 if num == 1:
                     product, quantity = ing.split(':')
-                    insert_product_query = f"""INSERT INTO product_entity (TITLE) VALUES ('{product}') RETURNING id"""
+                    request = f"""select exists(select * from product_entity where TITLE = '{product}')"""
+                    cursor.execute(request)
+                    responce = cursor.fetchone()[0]
+                    # print(f'ing = {repr(ing)}, product = {repr(product)}')
+                    if responce == True:
+                        request2 = f"""SELECT id from product_entity where title = '{product}'"""
+                        cursor.execute(request2)
+                        product_id = cursor.fetchone()[0]
+                    else:
+                        insert_product_query = f"""INSERT INTO product_entity (TITLE) VALUES ('{product}') RETURNING id"""
+                        cursor.execute(insert_product_query)
+                        product_id = cursor.fetchone()[0]
                 else:
                     product = ing
-                    insert_product_query = f"""INSERT INTO product_entity (TITLE) VALUES ('{product}') RETURNING id"""
+                    request = f"""select exists(select * from product_entity where TITLE = '{product}')"""
+                    cursor.execute(request)
+                    responce = cursor.fetchone()[0]
+                    # print(f'ing = {repr(ing)}, product = {repr(product)}')
+                    if responce == True:
+                        request2 = f"""SELECT id from product_entity where title = '{product}'"""
+                        cursor.execute(request2)
+                        product_id = cursor.fetchone()[0]
+                    else:
+                        insert_product_query = f"""INSERT INTO product_entity (TITLE) VALUES ('{product}') RETURNING id"""
+                        cursor.execute(insert_product_query)
+                        product_id = cursor.fetchone()[0]
 
-                cursor.execute(insert_product_query)
-                product_id = cursor.fetchone()[0]
                 insert_recipes_query = f"""INSERT INTO recipes (QUANTITY, dish_id, product_id) VALUES ('{quantity}','{dish_id}','{product_id}') RETURNING id"""
                 #                 print('insert_product_query =', insert_product_query)
 
