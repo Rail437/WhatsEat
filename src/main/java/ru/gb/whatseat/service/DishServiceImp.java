@@ -32,7 +32,9 @@ public class DishServiceImp implements DishService{
         return dishRepo.findAll(spec).stream()
                 .map(dishEntity -> new DishModel(dishEntity.getId(),
                         dishEntity.getTitle(),
-                        dishEntity.getDescription()))
+                        dishEntity.getDescription(),
+                        dishEntity.getIngredients_list(),
+                        dishEntity.getImg_path()))
                 .collect(Collectors.toList());
     }
 

@@ -16,8 +16,9 @@ public class DishEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private int diffLevel;
     private String description;
+    private String ingredients_list;
+    private String img_path;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
