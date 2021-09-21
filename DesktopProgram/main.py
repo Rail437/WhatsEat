@@ -1,5 +1,6 @@
 import sys
 import requests
+import json
 
 from PyQt5 import QtWidgets
 
@@ -13,6 +14,11 @@ if __name__ == "__main__":
     CONFIG = load_configs()
     session = requests.Session()
     ADDRESS_SERVER = get_address(CONFIG)
+
+    # Response server (TEST)
+    # with open('answer_server_2.json', 'w') as f:
+    #     answer = session.get('http://185.46.8.32:8080/whatseat/api/v1/products?products=')
+    #     json.dump(answer.json(), f)
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()

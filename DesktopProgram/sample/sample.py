@@ -38,7 +38,26 @@ class Ui_MainWindow(object):
         self.centralwidget.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.centralwidget.setStyleSheet("")
         self.centralwidget.setObjectName("centralwidget")
-        self.search_panel = QtWidgets.QWidget(self.centralwidget)
+        self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
+        self.scrollArea.setGeometry(QtCore.QRect(0, 0, 1220, 920))
+        self.scrollArea.setStyleSheet("border:none;")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1220, 920))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.list_recipes = QtWidgets.QWidget(self.scrollAreaWidgetContents)
+        self.list_recipes.setGeometry(QtCore.QRect(24, 170, 1172, 9000))
+        self.list_recipes.setObjectName("list_recipes")
+        self.preview = QtWidgets.QLabel(self.list_recipes)
+        self.preview.setGeometry(QtCore.QRect(360, 0, 501, 750))
+        font = QtGui.QFont()
+        font.setFamily("Times New Roman")
+        font.setPointSize(24)
+        self.preview.setFont(font)
+        self.preview.setStyleSheet("color: rgb(255, 255, 255);")
+        self.preview.setObjectName("preview")
+        self.search_panel = QtWidgets.QWidget(self.scrollAreaWidgetContents)
         self.search_panel.setGeometry(QtCore.QRect(24, 32, 1172, 106))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -47,37 +66,14 @@ class Ui_MainWindow(object):
         self.search_panel.setSizePolicy(sizePolicy)
         self.search_panel.setMinimumSize(QtCore.QSize(1172, 106))
         self.search_panel.setMaximumSize(QtCore.QSize(1172, 106))
-        self.search_panel.setStyleSheet("border-radius:10px;\n"
-                                        "background-color: rgb(56, 56, 56);")
+        self.search_panel.setStyleSheet("border-radius:10px;background-color: rgb(56, 56, 56);")
         self.search_panel.setObjectName("search_panel")
         self.input_product = QtWidgets.QLineEdit(self.search_panel)
         self.input_product.setGeometry(QtCore.QRect(12, 55, 909, 35))
         font = QtGui.QFont()
         font.setPointSize(18)
         self.input_product.setFont(font)
-        self.input_product.setStyleSheet("color: rgb(0, 0, 0);\n"
-                                         "background-color: rgb(255, 255, 255);\n"
-                                         "border-top-left-radius: 10px;\n"
-                                         "    border-top-right-radius: 0px;\n"
-                                         "    border-bottom-right-radius: 0px;\n"
-                                         "    border-bottom-left-radius: 10px;\n"
-                                         "border-top-color: rgb(44, 44, 44);\n"
-                                         "    border-top-style: solid;\n"
-                                         "    border-top-width: 1px;\n"
-                                         "    border-right-color: rgb(44, 44, 44);\n"
-                                         "    border-right-style: solid;\n"
-                                         "    border-right-width: 1px;\n"
-                                         "    border-bottom-color: rgb(44, 44, 44);\n"
-                                         "    border-bottom-style: solid;\n"
-                                         "    border-bottom-width: 1px;\n"
-                                         "    border-left-color: rgb(44, 44, 44);\n"
-                                         "    border-left-style: solid;\n"
-                                         "    border-left-width: 1px;\n"
-                                         "    border-image-source: initial;\n"
-                                         "    border-image-slice: initial;\n"
-                                         "    border-image-width: initial;\n"
-                                         "    border-image-outset: initial;\n"
-                                         "    border-image-repeat: initial;")
+        self.input_product.setStyleSheet("color: rgb(0, 0, 0);background-color: rgb(255, 255, 255);border-top-left-radius: 10px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 10px;border-top-color: rgb(44, 44, 44);border-top-style: solid;border-top-width: 1px;border-right-color: rgb(44, 44, 44);border-right-style: solid;border-right-width: 1px;border-bottom-color: rgb(44, 44, 44);border-bottom-style: solid;border-bottom-width: 1px;border-left-color: rgb(44, 44, 44);border-left-style: solid;border-left-width: 1px;border-image-source: initial;border-image-slice: initial;    border-image-width: initial;border-image-outset: initial;border-image-repeat: initial;")
         self.input_product.setText("")
         self.input_product.setObjectName("input_product")
         self.search_recipe = QtWidgets.QPushButton(self.search_panel)
@@ -85,39 +81,17 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(18)
         self.search_recipe.setFont(font)
-        self.search_recipe.setStyleSheet("background-color: rgb(231, 180, 0);\n"
-                                         "border-color: rgb(44, 44, 44);\n"
-                                         "border-top-left-radius: 0px;\n"
-                                         "border-top-right-radius: 10px;\n"
-                                         "border-bottom-right-radius: 10px;\n"
-                                         "border-bottom-left-radius: 0px;")
+        self.search_recipe.setStyleSheet("background-color: rgb(231, 180, 0);border-color: rgb(44, 44, 44);border-top-left-radius: 0px;border-top-right-radius: 10px;border-bottom-right-radius: 10px;border-bottom-left-radius: 0px;")
         self.search_recipe.setObjectName("search_recipe")
         self.search_recipe.clicked.connect(self._send_request)
-        self.label = QtWidgets.QLabel(self.search_panel)
-        self.label.setGeometry(QtCore.QRect(16, 16, 351, 31))
+        self.search_label = QtWidgets.QLabel(self.search_panel)
+        self.search_label.setGeometry(QtCore.QRect(16, 16, 351, 31))
         font = QtGui.QFont()
         font.setPointSize(24)
-        self.label.setFont(font)
-        self.label.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label.setObjectName("label")
-        self.list_recipes = QtWidgets.QWidget(self.centralwidget)
-        self.list_recipes.setGeometry(QtCore.QRect(24, 170, 1172, 718))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.list_recipes.sizePolicy().hasHeightForWidth())
-        self.list_recipes.setSizePolicy(sizePolicy)
-        self.list_recipes.setMinimumSize(QtCore.QSize(1172, 718))
-        self.list_recipes.setMaximumSize(QtCore.QSize(1172, 718))
-        self.list_recipes.setObjectName("list_recipes")
-        self.preview = QtWidgets.QLabel(self.list_recipes)
-        self.preview.setGeometry(QtCore.QRect(360, 0, 451, 718))
-        font = QtGui.QFont()
-        font.setFamily("Times New Roman")
-        font.setPointSize(24)
-        self.preview.setFont(font)
-        self.preview.setObjectName("label")
-        self.preview.setStyleSheet("color: rgb(255, 255, 255)")
+        self.search_label.setFont(font)
+        self.search_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.search_label.setObjectName("search_label")
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -126,9 +100,11 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "WhatsEat"))
-        self.search_recipe.setText(_translate("MainWindow", "Подобрать рецепт"))
-        self.label.setText(_translate("MainWindow", "Введите ингредиенты:"))
         self.preview.setText(_translate("MainWindow", "Здесь будут подходящие рецепты"))
+        self.search_recipe.setText(_translate("MainWindow", "Подобрать рецепт"))
+        self.search_label.setText(_translate("MainWindow", "Введите ингредиенты:"))
+
+
 
     def _preparation_form(self, recipe: dict, target, geometry: dict):
         recipe_form = QtWidgets.QWidget(target)
@@ -181,6 +157,7 @@ class Ui_MainWindow(object):
             y = self._get_geometry_y(row)
             self._preparation_form(recipe, self.list_recipes, {'x': x, 'y': y})
             column += 1
+        # self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1220, self._get_geometry_y(row + 1)))
 
     @staticmethod
     def _get_geometry_x(column):
