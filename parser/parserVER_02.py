@@ -8,7 +8,7 @@ import os
 
 
 def get_image(image_url):
-    dir = '../src/main/resources/static/sample/img/'
+    dir = 'whatseat/sample/img/'
     path = os.path.dirname(dir)
     if not os.path.exists(path):
         os.makedirs(path)
@@ -54,10 +54,17 @@ def print_dict(d):
 
 def parse_recipes(urls):
     dct = {}
+    exception_list = ['Говядина по-китайски: "Стир-фрай" из говядины и овощей с соусом терияки | Рецепт',\
+                      'Грильяж приготовится очень легко и просто в духовке',\
+                      'Тефтели в томатным соусе',\
+                      'Блины (блинчики) с курицей, морковью, шампиньонами и сыром']
     for url in urls:
         response = requests.get(url)
         soup = BeautifulSoup(response.content, 'html.parser')
         title = soup.find('h1', class_='has-text-weight-bold breadcrumb-title').get_text(strip=True)
+
+        if title in exception_list:
+            continue
         # timer = soup.find('div', class_='has-text-centered').get_text(strip=True)
         # print(timer)
         image = soup.find('picture', class_='recipe-cover-img')
@@ -66,12 +73,33 @@ def parse_recipes(urls):
         ingredients = soup.find('div', 'card-content recipe')
         final_list = ingredients.find('ul')
         final_list = final_list.findAll('li')
+        # try:
+        #     step = final_list.findAll('a').get_text(strip=True)
+        # except:
+        #     pass
         lst = []
         for item in final_list:
-            item = str(item)
-            item = item[4:len(item) - 5]
-            # item.capitalize()
+            try:
+                prod = item.find('a').get_text(strip=True)
+                prod = str(prod)
+                item = str(item)
+                step = item.find('</a>')
+                item = item[step+4:len(item) - 5]
+                item = prod + item
+
+            except:
+                item = str(item)
+            # item.find('<a')
+                item = item[4:len(item) - 5]
+            # item = prod + item
             lst.append(item)
+
+        # for i in new_list:
+        #     i = str(i)
+        #     num, step = i.split('</span>')
+        #     num = num[num.rfind('>') + 1:].strip()
+        #     step = step.strip()
+        #     new_list2.append(f'<li>{step}\n')
 
         value_dict = {}
         value_dict['Список ингредиентов'] = lst
@@ -80,10 +108,14 @@ def parse_recipes(urls):
 
         text = soup.find('ol', class_='p-t-2')
         text_list = text.findAll('li')
-        new_list = text_list[:-1]
 
+        new_list = text_list[:-1]
+        # if new_list.find('a') != None:
+        #     new_list = new_list.find('a').get_text(strip=True)
         new_list2 = []
+
         for i in new_list:
+
             i = str(i)
             num, step = i.split('</span>')
             num = num[num.rfind('>') + 1:].strip()
