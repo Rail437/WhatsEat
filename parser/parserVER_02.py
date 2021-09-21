@@ -86,11 +86,13 @@ def parse_recipes(urls):
                 step = item.find('</a>')
                 item = item[step+4:len(item) - 5]
                 item = prod + item
+                item = item.capitalize()
 
             except:
                 item = str(item)
             # item.find('<a')
                 item = item[4:len(item) - 5]
+                item = item.capitalize()
             # item = prod + item
             lst.append(item)
 
