@@ -28,7 +28,6 @@ def parse_url(url):
     for elem in items:
         link = elem['href']
         recipes_urls.append(link)
-    # print(recipes_urls)
     return recipes_urls
 
 
@@ -73,10 +72,6 @@ def parse_recipes(urls):
         ingredients = soup.find('div', 'card-content recipe')
         final_list = ingredients.find('ul')
         final_list = final_list.findAll('li')
-        # try:
-        #     step = final_list.findAll('a').get_text(strip=True)
-        # except:
-        #     pass
         lst = []
         for item in final_list:
             try:
@@ -90,18 +85,9 @@ def parse_recipes(urls):
 
             except:
                 item = str(item)
-            # item.find('<a')
                 item = item[4:len(item) - 5]
                 item = item.capitalize()
-            # item = prod + item
             lst.append(item)
-
-        # for i in new_list:
-        #     i = str(i)
-        #     num, step = i.split('</span>')
-        #     num = num[num.rfind('>') + 1:].strip()
-        #     step = step.strip()
-        #     new_list2.append(f'<li>{step}\n')
 
         value_dict = {}
         value_dict['Список ингредиентов'] = lst
@@ -111,18 +97,30 @@ def parse_recipes(urls):
         text = soup.find('ol', class_='p-t-2')
         text_list = text.findAll('li')
 
-        new_list = text_list[:-1]
-        # if new_list.find('a') != None:
-        #     new_list = new_list.find('a').get_text(strip=True)
         new_list2 = []
 
-        for i in new_list:
-
-            i = str(i)
-            num, step = i.split('</span>')
-            num = num[num.rfind('>') + 1:].strip()
-            step = step.strip()
-            new_list2.append(f'<li>{step}\n')
+        for i in text_list:
+            try:
+                a_text = i.find('a').get_text(strip=True)
+                if a_text != -1:
+                    continue
+                # a_text = str(a_text)
+                # i = str(i)
+                # ind1 = i.find('<a')
+                # ind2 = i.find('</a>')
+                # section = i[0:ind1]
+                # section2 = i[ind2+4:-1]
+                # res = section + a_text + section2
+                # num, step2 = res.split('</span>')
+                # num = num[num.rfind('>') + 1:].strip()
+                # step2 = step2.strip()
+                # new_list2.append(f'<li>{step2}\n')
+            except:
+                i = str(i)
+                num, step = i.split('</span>')
+                num = num[num.rfind('>') + 1:].strip()
+                step = step.strip()
+                new_list2.append(f'<li>{step}\n')
         value_dict['Способ приготовления'] = new_list2
         dct[title] = value_dict
     print_dict(dct)
@@ -169,6 +167,7 @@ def db_fill(lst, name):
             dish_id = cursor.fetchone()[0]
 
             dish_ingredients = value['Список ингредиентов']
+
             for ing in dish_ingredients:
                 print(ing)
                 num = ing.count(':')
