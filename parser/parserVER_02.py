@@ -8,7 +8,7 @@ import os
 
 
 def get_image(image_url):
-    dir = 'whatseat/sample/img/'
+    dir = 'sample/img/'
     path = os.path.dirname(dir)
     if not os.path.exists(path):
         os.makedirs(path)
