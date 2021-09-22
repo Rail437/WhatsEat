@@ -134,7 +134,7 @@ def db_fill(lst, name):
         connection = psycopg2.connect(user="postgres",
                                       # пароль, который указан при установке PostgreSQL
                                       password="qwerty",
-                                      host="127.0.0.1gi",
+                                      host="127.0.0.1",
                                       port="5432",
                                       database="whatseat")
 
