@@ -134,7 +134,7 @@ def db_fill(lst, name):
         connection = psycopg2.connect(user="postgres",
                                       # пароль, который указан при установке PostgreSQL
                                       password="qwerty",
-                                      host="127.0.0.1",
+                                      host="127.0.0.1gi",
                                       port="5432",
                                       database="whatseat")
 
@@ -145,7 +145,7 @@ def db_fill(lst, name):
         if cursor.rowcount <= 0:
             cursor.execute(f"""INSERT INTO dish_category_entity (TITLE) VALUES ('{name}') RETURNING id""")
             with open(dir, "a") as f:
-                f.write(f"""INSERT INTO dish_category_entity (TITLE) VALUES ('{name}')""")
+                f.write(f"""INSERT INTO dish_category_entity (TITLE) VALUES ('{name}');""")
 
 
         category_id = cursor.fetchone()[0]
@@ -160,7 +160,7 @@ def db_fill(lst, name):
             dish_img_path = value['Путь к изображению']
             insert_dish_query = f"""INSERT INTO dish_entity (TITLE, DESCRIPTION, ingredients_list, img_path, DISH_CAT_ID) VALUES ('{dish_title}', '{dish_cooking_method}', '{dish_ingredients}','{dish_img_path}', '{category_id}') RETURNING id"""
             with open(dir, "a") as f:
-                f.write(f"""INSERT INTO dish_entity (TITLE, DESCRIPTION, ingredients_list, img_path, DISH_CAT_ID) VALUES ('{dish_title}', '{dish_cooking_method}', '{dish_ingredients}','{dish_img_path}', '{category_id}')""")
+                f.write(f"""INSERT INTO dish_entity (TITLE, DESCRIPTION, ingredients_list, img_path, DISH_CAT_ID) VALUES ('{dish_title}', '{dish_cooking_method}', '{dish_ingredients}','{dish_img_path}', '{category_id}');""")
             print('insert_dish_query =', insert_dish_query)
             cursor.execute(insert_dish_query)
 
@@ -185,7 +185,7 @@ def db_fill(lst, name):
                         insert_product_query = f"""INSERT INTO product_entity (TITLE) VALUES ('{product}') RETURNING id"""
                         cursor.execute(insert_product_query)
                         with open(dir, "a") as f:
-                            f.write(f"""INSERT INTO product_entity (TITLE) VALUES ('{product}')""")
+                            f.write(f"""INSERT INTO product_entity (TITLE) VALUES ('{product}');""")
                         product_id = cursor.fetchone()[0]
                 else:
                     product = ing
@@ -201,12 +201,12 @@ def db_fill(lst, name):
                         insert_product_query = f"""INSERT INTO product_entity (TITLE) VALUES ('{product}') RETURNING id"""
                         cursor.execute(insert_product_query)
                         with open(dir, "a") as f:
-                            f.write(f"""INSERT INTO product_entity (TITLE) VALUES ('{product}')""")
+                            f.write(f"""INSERT INTO product_entity (TITLE) VALUES ('{product}');""")
                         product_id = cursor.fetchone()[0]
 
                 insert_recipes_query = f"""INSERT INTO recipes (QUANTITY, dish_id, product_id) VALUES ('{quantity}','{dish_id}','{product_id}') RETURNING id"""
                 with open(dir, "a") as f:
-                    f.write(f"""INSERT INTO recipes (QUANTITY, dish_id, product_id) VALUES ('{quantity}','{dish_id}','{product_id}')""")
+                    f.write(f"""INSERT INTO recipes (QUANTITY, dish_id, product_id) VALUES ('{quantity}','{dish_id}','{product_id}');""")
                 #                 print('insert_product_query =', insert_product_query)
 
                 cursor.execute(insert_recipes_query)
