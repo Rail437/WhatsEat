@@ -20,8 +20,8 @@ public class MainController {
         model.addAttribute("recipes", dishService.findAllByProduct(productsList,principal));
         return "index_new";
     }
-/*
-    @GetMapping(value = "/reg")
+
+    /*@GetMapping(value = "/reg")
     public String reg(){
         return "registrate.html";
     }
@@ -29,5 +29,10 @@ public class MainController {
     @GetMapping("/favorits")
     public String favorit(){
         return "favorite";
+    }
+
+    @GetMapping("/deferrer")
+    public String def(){
+        return "deferrer";
     }*/
 }

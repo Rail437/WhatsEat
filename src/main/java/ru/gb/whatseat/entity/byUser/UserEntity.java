@@ -1,6 +1,5 @@
 package ru.gb.whatseat.entity.byUser;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import ru.gb.whatseat.entity.DishEntity;
@@ -28,11 +27,6 @@ public class UserEntity {
 
     public UserEntity() {}
 
-    public UserEntity(UUID id, String username) {
-        this.id = id;
-        this.username = username;
-    }
-
     @ManyToMany
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -46,14 +40,32 @@ public class UserEntity {
     private Set<DishEntity> favorits = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "users_favorits",
+    @JoinTable(name = "users_favorites",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "dish_id"))
-    private Collection<DishEntity> dishEntities;
+    private Collection<DishEntity> favoriteDishEntities;
 
-    public void setDishEntities(List<DishEntity> dishEntities) {
-        for (int i = 0; i < dishEntities.size() ; i++) {
-            this.dishEntities.add(dishEntities.get(i));
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "users_deferrer",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "dish_id"))
+    private Collection<DishEntity> deferrerDishEntities;
+
+    public void setFavoriteDishEntities(List<DishEntity> dishEntities) {
+        this.favoriteDishEntities.addAll(dishEntities);
+    }
+    public void setDeferrerDishEntities(List<DishEntity> dishEntities) {
+        this.deferrerDishEntities.addAll(dishEntities);
+    }
+    public void remuveFavorites(List<DishEntity> dishEntity){
+        for (DishEntity entity : dishEntity) {
+            this.favoriteDishEntities.remove(entity);
+        }
+    }
+    public void remuveDeferrer(List<DishEntity> dishEntity){
+        for (DishEntity entity : dishEntity) {
+            this.deferrerDishEntities.remove(entity);
         }
     }
 }

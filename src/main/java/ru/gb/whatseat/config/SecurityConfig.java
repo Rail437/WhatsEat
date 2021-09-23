@@ -34,7 +34,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .and()
-                .formLogin().disable();//Стандартные страницы login и logout отключены.
+                .formLogin()
+                .and().csrf()
+                .disable();//Стандартные страницы login и logout отключены.
     }
 
     @Bean

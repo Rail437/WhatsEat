@@ -31,6 +31,7 @@ public class DishModel {
 
     public static DishModel toModel(DishEntity dishEntity){
         DishModel model = new DishModel();
+        model.setId(dishEntity.getId());
         model.setTitle(dishEntity.getTitle());
         model.setDescription(dishEntity.getDescription());
         model.setIngredients_list(dishEntity.getIngredients_list());
