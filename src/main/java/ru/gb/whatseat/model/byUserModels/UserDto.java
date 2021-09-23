@@ -1,8 +1,8 @@
-package ru.gb.whatseat.model;
+package ru.gb.whatseat.model.byUserModels;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import ru.gb.whatseat.entity.User;
+import ru.gb.whatseat.entity.byUser.UserEntity;
 
 import java.util.UUID;
 
@@ -23,7 +23,7 @@ public class UserDto {
         this.Email = mail;
     }
 
-    public static UserDto valueOf(User user) {
+    public static UserDto valueOf(UserEntity user) {
         return new UserDto(
                 user.getId(),
                 user.getUsername(),
@@ -33,8 +33,8 @@ public class UserDto {
         );
     }
 
-    public User mapToUser() {
-        User user = new User();
+    public UserEntity mapToUser() {
+        UserEntity user = new UserEntity();
         user.setId(id);
         user.setUsername(name);
         user.setLogin(login);
