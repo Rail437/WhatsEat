@@ -26,4 +26,5 @@ public class DishEntity {
 
     @OneToMany(mappedBy = "dish")
     private List<RecipeEntity> recipes;
+
 }

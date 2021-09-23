@@ -20,20 +20,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserService userService;
 
     @Autowired
-    public void setUserService(UserService userService) {
+    public SecurityConfig(UserService userService) {
         this.userService = userService;
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/client/**", "/api/**").authenticated()
-//                .anyRequest().authenticated()
+                .antMatchers("/reg","/registration").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .logout()
                 .and()
                 .formLogin().disable();//Стандартные страницы login и logout отключены.
-        // Тут можно будет указать страницы на которые необходимо перейти если не залогинен.
     }
 
     @Bean

@@ -1,6 +1,7 @@
 package ru.gb.whatseat.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,13 +10,17 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.gb.whatseat.model.UserDto;
-import ru.gb.whatseat.entity.Role;
-import ru.gb.whatseat.entity.User;
+import ru.gb.whatseat.model.DishModel;
+import ru.gb.whatseat.model.byUserModels.UserDto;
+import ru.gb.whatseat.entity.byUser.Role;
+import ru.gb.whatseat.entity.byUser.UserEntity;
+import ru.gb.whatseat.repository.HistoryRepo;
 import ru.gb.whatseat.repository.UserRepository;
 
+import java.security.Principal;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -26,8 +31,14 @@ public class UserService implements UserDetailsService {
 
     private PasswordEncoder bCryptPasswordEncoder;
 
+    private HistoryRepo historyRepo;
+
+    public UserService(HistoryRepo historyRepo) {
+        this.historyRepo = historyRepo;
+    }
+
     @Autowired
-    public void setbCryptPasswordEncoder(PasswordEncoder passwordEncoder) {
+    public void setbCryptPasswordEncoder(@Lazy PasswordEncoder passwordEncoder) {
         this.bCryptPasswordEncoder = passwordEncoder;
     }
 
@@ -36,14 +47,14 @@ public class UserService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    public User findByLogin(String login) {
+    public UserEntity findByLogin(String login) {
         return userRepository.findByLogin(login);
     }
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = findByLogin(username);
+        UserEntity user = findByLogin(username);
         if(user == null) {
             throw new UsernameNotFoundException(String.format("User '%s' not found", username));
         }
@@ -56,12 +67,12 @@ public class UserService implements UserDetailsService {
     }
 
     public boolean saveUser(UserDto userDto) {
-        User userFromDB = userRepository.findByLogin(userDto.getLogin());
+        UserEntity userFromDB = userRepository.findByLogin(userDto.getLogin());
         if (userFromDB != null) {
             return false;
         }
         final UUID userId = UUID.randomUUID();
-        User user = userDto.mapToUser();
+        UserEntity user = userDto.mapToUser();
         user.setId(userId);
         user.setRoles(Collections.singleton(new Role( 1L,"USER")));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -75,5 +86,10 @@ public class UserService implements UserDetailsService {
             return true;
         }
         return false;
+    }
+
+    public List<String> getHistory(Principal principal){
+        UserEntity user = userRepository.findByLogin(principal.getName());
+        return historyRepo.findByMyUser_Id(user.getId());
     }
 }

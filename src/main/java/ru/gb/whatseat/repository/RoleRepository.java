@@ -2,7 +2,7 @@ package ru.gb.whatseat.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.gb.whatseat.entity.Role;
+import ru.gb.whatseat.entity.byUser.Role;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
