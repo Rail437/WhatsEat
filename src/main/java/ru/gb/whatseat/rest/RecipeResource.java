@@ -6,6 +6,7 @@ import ru.gb.whatseat.model.DishModel;
 import ru.gb.whatseat.parametrs.ProductsList;
 import ru.gb.whatseat.service.DishService;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -16,7 +17,7 @@ public class RecipeResource {
     private final DishService dishService;
 
     @GetMapping(path = "/products", produces = "application/json")
-    public List<DishModel> findByProduct(ProductsList productsList){
-        return dishService.findAllByProduct(productsList);
+    public List<DishModel> findByProduct(ProductsList productsList, Principal principal){
+        return dishService.findAllByProduct(productsList, principal);
     }
 }

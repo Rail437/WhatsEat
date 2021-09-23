@@ -1,4 +1,4 @@
-package ru.gb.whatseat.entity;
+package ru.gb.whatseat.entity.byUser;
 
 import lombok.Data;
 
@@ -16,6 +16,7 @@ public class Role {
 
     public Role() {
     }
+
     public Role(String name) {
         this.name = name;
     }

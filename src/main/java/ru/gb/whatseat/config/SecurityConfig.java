@@ -18,23 +18,28 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+  
     private final UserService userService;
-
+  
+    @Autowired
     public SecurityConfig(UserService userService) {
-       this.userService = userService;
+        this.userService = userService;
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/client/**", "/api/**").authenticated()
+
+                .antMatchers("/reg","/registration").permitAll()
                 .anyRequest().authenticated()
-//                .and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) //Для фронта на AngularJs
                 .and()
                 .logout()
                 .and()
-                .formLogin().disable();//Стандартные страницы login и logout отключены.
-        // Тут можно будет указать страницы на которые необходимо перейти если не залогинен.
+                .formLogin()
+                .and().csrf()
+                .disable();//Стандартные страницы login и logout отключены.
     }
 
     @Bean
