@@ -18,7 +18,6 @@ public class RecipeResource {
 
     @GetMapping(path = "/products", produces = "application/json")
     public List<DishModel> findByProduct(ProductsList productsList, Principal principal){
-
         return dishService.findAllByProduct(productsList, principal);
     }
 }

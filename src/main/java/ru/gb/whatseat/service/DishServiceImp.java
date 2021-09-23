@@ -30,7 +30,9 @@ public class DishServiceImp implements DishService {
             String[] strings = parsString(productsList.getProducts());
             spec = spec.and(DishSpecification
                     .dishEntitySpecification(strings));
-            historyService.saveHistory(strings,principal);
+            if (principal != null) {
+                historyService.saveHistory(strings, principal);
+            }
         }
 
         return dishRepo.findAll(spec).stream()
