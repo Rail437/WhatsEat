@@ -320,13 +320,24 @@ h1 {
     margin-bottom: 16px;
 }
 
-.recipe__ingredients {
-    display: flex;
-    flex-direction: column;
-}
-
 .ingredient_quantity {
     display: flex;
     justify-content: space-between;
     font-size: 18px;
+}
+
+.details {
+    position: absolute;
+    display: none;
+    width: 22vw;
+    height: 25vh;
+    margin-left: 19vw;
+    margin-top: 15vh;
+}
+
+.details__ingredients {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 20px;
 }
