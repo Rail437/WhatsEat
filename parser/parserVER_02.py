@@ -128,7 +128,7 @@ def parse_recipes(urls):
 
 
 def db_fill(lst, name):
-    dir = '../src/main/resources/db/migration/V3_INSERT_VALUES.sql'
+    dir = '../src/main/resources/db/migration/V3__INSERT_VALUES.sql'
     try:
         # Подключиться к существующей базе данных
         connection = psycopg2.connect(user="postgres",
@@ -144,8 +144,8 @@ def db_fill(lst, name):
         cursor.execute(f"""SELECT id FROM dish_category_entity WHERE title = '{name}'""")
         if cursor.rowcount <= 0:
             cursor.execute(f"""INSERT INTO dish_category_entity (TITLE) VALUES ('{name}') RETURNING id""")
-            with open(dir, "a") as f:
-                f.write(f"""INSERT INTO dish_category_entity (TITLE) VALUES ('{name}');""")
+        with open(dir, "a") as f:
+            f.write(f"""INSERT INTO dish_category_entity (TITLE) VALUES ('{name}');""")
 
 
         category_id = cursor.fetchone()[0]
@@ -177,7 +177,7 @@ def db_fill(lst, name):
                     cursor.execute(request)
                     responce = cursor.fetchone()[0]
                     # print(f'ing = {repr(ing)}, product = {repr(product)}')
-                    if responce == True:
+                    if responce is True:
                         request2 = f"""SELECT id from product_entity where title = '{product}'"""
                         cursor.execute(request2)
                         product_id = cursor.fetchone()[0]
