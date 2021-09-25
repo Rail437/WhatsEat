@@ -92,4 +92,14 @@ public class UserService implements UserDetailsService {
         UserEntity user = userRepository.findByLogin(principal.getName());
         return historyRepo.findByMyUser_Id(user.getId());
     }
+
+    public boolean editUserPassword(UserDto userDto, Principal principal) {
+        UserEntity userFromDB = userRepository.findByLogin(userDto.getLogin());
+        if (userFromDB == null || principal.getName().equalsIgnoreCase(userFromDB.getLogin())) {
+            return false;
+        }
+        userFromDB.setPassword(userDto.getPassword());
+        userRepository.save(userFromDB);
+        return true;
+    }
 }

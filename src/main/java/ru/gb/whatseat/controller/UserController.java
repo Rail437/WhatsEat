@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.gb.whatseat.model.DishModel;
 import ru.gb.whatseat.model.byUserModels.UserDto;
 import ru.gb.whatseat.service.UserService;
 
@@ -40,6 +39,13 @@ public class UserController {
             return userService.getHistory(principal);
         }
         return null;
+    }
+
+    @PostMapping("/editpass")
+    public ResponseEntity<HttpStatus> editPassword(UserDto userDto, Principal principal) {
+        return userService.editUserPassword(userDto, principal)?
+                new ResponseEntity<>(HttpStatus.OK):
+                new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 
 }
