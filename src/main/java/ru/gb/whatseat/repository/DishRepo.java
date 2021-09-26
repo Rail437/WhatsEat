@@ -11,10 +11,9 @@ import java.util.List;
 public interface DishRepo extends CrudRepository<DishEntity, Long>, JpaSpecificationExecutor<DishEntity> {
 
     @Query("select d " +
-            "from ProductEntity p " +
-            "join fetch RecipeEntity r on (p.id=r.product) " +
-            "join fetch DishEntity d on (r.dish=d.id) " +
-            "where p.title in (:products) " +
-            "group by r.dish ")
-    List<DishEntity> findByProduct(@Param("products") String products);
+            "from DishEntity d " +
+            "join fetch RecipeEntity r on(r.dish=d.id) " +
+            "join fetch ProductEntity p on(r.product=p.id) " +
+            "where d.id = :id")
+    DishEntity findByDishId(@Param("id") Long id);
 }

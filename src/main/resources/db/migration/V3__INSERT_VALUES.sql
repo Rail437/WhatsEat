@@ -1,4 +1,5 @@
-INSERT INTO dish_category_entity (TITLE) VALUES ('Блюда из курицы');INSERT INTO dish_entity (TITLE, DESCRIPTION, ingredients_list, img_path, DISH_CAT_ID) VALUES ('Суп том ям с курицей и креветками', '<li>Сначала нагрейте кокосовое масло в кастрюле и обжарьте на нем измельченный чеснок, лук и пасту карри (около 2 минут).
+INSERT INTO dish_category_entity (TITLE) VALUES ('Блюда из курицы');
+INSERT INTO dish_entity (TITLE, DESCRIPTION, ingredients_list, img_path, DISH_CAT_ID) VALUES ('Суп том ям с курицей и креветками', '<li>Сначала нагрейте кокосовое масло в кастрюле и обжарьте на нем измельченный чеснок, лук и пасту карри (около 2 минут).
                                     </li>
 
 <li>Затем добавьте курицу, нарезанную кусочками размером с один укус, и готовьте еще 3 минуты или около того.

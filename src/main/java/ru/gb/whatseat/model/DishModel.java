@@ -2,6 +2,9 @@ package ru.gb.whatseat.model;
 
 import lombok.Data;
 import ru.gb.whatseat.entity.DishEntity;
+import ru.gb.whatseat.entity.RecipeEntity;
+
+import java.util.List;
 
 @Data
 public class DishModel {
@@ -11,6 +14,7 @@ public class DishModel {
     private String description;
     private String ingredients_list;
     private String img_path;
+    private List<RecipeEntity> recipe;
 
     public DishModel() {
     }
@@ -35,6 +39,7 @@ public class DishModel {
         model.setTitle(dishEntity.getTitle());
         model.setDescription(dishEntity.getDescription());
         model.setIngredients_list(dishEntity.getIngredients_list());
+        model.setRecipe(dishEntity.getRecipes());
         model.setImg_path(dishEntity.getImg_path());
         return model;
     }
