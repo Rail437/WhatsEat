@@ -16,8 +16,8 @@ if __name__ == "__main__":
     ADDRESS_SERVER = get_address(CONFIG)
 
     # Response server (TEST)
-    # with open('answer_server_2.json', 'w') as f:
-    #     answer = session.get('http://185.46.8.32:8080/whatseat/api/v1/products?products=')
+    # with open('answer_server_3.json', 'w') as f:
+    #     answer = session.get('http://185.46.8.32:8080/whatseat/api/v1/dishes?products=')
     #     json.dump(answer.json(), f)
 
     app = QtWidgets.QApplication(sys.argv)

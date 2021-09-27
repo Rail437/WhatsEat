@@ -31,7 +31,7 @@ def get_address(CONFIG):
 
 
 def get_items_response(items='products'):
-    return f'{items}?{items}='
+    return f'dishes?{items}='
 
 
 def get_response_server(address, items, search=None):

@@ -73,7 +73,8 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(18)
         self.input_product.setFont(font)
-        self.input_product.setStyleSheet("color: rgb(0, 0, 0);background-color: rgb(255, 255, 255);border-top-left-radius: 10px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 10px;border-top-color: rgb(44, 44, 44);border-top-style: solid;border-top-width: 1px;border-right-color: rgb(44, 44, 44);border-right-style: solid;border-right-width: 1px;border-bottom-color: rgb(44, 44, 44);border-bottom-style: solid;border-bottom-width: 1px;border-left-color: rgb(44, 44, 44);border-left-style: solid;border-left-width: 1px;border-image-source: initial;border-image-slice: initial;    border-image-width: initial;border-image-outset: initial;border-image-repeat: initial;")
+        self.input_product.setStyleSheet(
+            "color: rgb(0, 0, 0);background-color: rgb(255, 255, 255);border-top-left-radius: 10px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 10px;border-top-color: rgb(44, 44, 44);border-top-style: solid;border-top-width: 1px;border-right-color: rgb(44, 44, 44);border-right-style: solid;border-right-width: 1px;border-bottom-color: rgb(44, 44, 44);border-bottom-style: solid;border-bottom-width: 1px;border-left-color: rgb(44, 44, 44);border-left-style: solid;border-left-width: 1px;border-image-source: initial;border-image-slice: initial;    border-image-width: initial;border-image-outset: initial;border-image-repeat: initial;")
         self.input_product.setText("")
         self.input_product.setObjectName("input_product")
         self.search_recipe = QtWidgets.QPushButton(self.search_panel)
@@ -81,7 +82,8 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(18)
         self.search_recipe.setFont(font)
-        self.search_recipe.setStyleSheet("background-color: rgb(231, 180, 0);border-color: rgb(44, 44, 44);border-top-left-radius: 0px;border-top-right-radius: 10px;border-bottom-right-radius: 10px;border-bottom-left-radius: 0px;")
+        self.search_recipe.setStyleSheet(
+            "background-color: rgb(231, 180, 0);border-color: rgb(44, 44, 44);border-top-left-radius: 0px;border-top-right-radius: 10px;border-bottom-right-radius: 10px;border-bottom-left-radius: 0px;")
         self.search_recipe.setObjectName("search_recipe")
         self.search_recipe.clicked.connect(self._send_request)
         self.search_label = QtWidgets.QLabel(self.search_panel)
@@ -103,8 +105,6 @@ class Ui_MainWindow(object):
         self.preview.setText(_translate("MainWindow", "Здесь будут подходящие рецепты"))
         self.search_recipe.setText(_translate("MainWindow", "Подобрать рецепт"))
         self.search_label.setText(_translate("MainWindow", "Введите ингредиенты:"))
-
-
 
     def _preparation_form(self, recipe: dict, target, geometry: dict):
         recipe_form = QtWidgets.QWidget(target)
@@ -157,7 +157,7 @@ class Ui_MainWindow(object):
             y = self._get_geometry_y(row)
             self._preparation_form(recipe, self.list_recipes, {'x': x, 'y': y})
             column += 1
-        # self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1220, self._get_geometry_y(row + 1)))
+            # self.scrollArea.setGeometry(QtCore.QRect(0, 0, 1172, self._get_geometry_y(row + 1)))
 
     @staticmethod
     def _get_geometry_x(column):
