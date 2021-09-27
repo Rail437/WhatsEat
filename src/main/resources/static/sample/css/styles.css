@@ -222,7 +222,7 @@ h1 {
 
 .nav a {
     font-family: 'Jost', sans-serif;
-    padding: 16px 0 41px 30px;
+    padding: 16px 0 41px 0;
     display: block;
     color: #fff;
     font-weight: 400;
@@ -236,7 +236,7 @@ h1 {
     position: relative;
     max-width: 1220px;
     margin: 0;
-    padding: 32px 32px 0 32px;
+    padding: 32px 32px 0 0;
     color: #fff;
     border-radius: 30px;
 }
@@ -284,16 +284,6 @@ h1 {
     font-size: 24px;
     font-weight: normal;
     line-height: 32px;
-}
-
-.search__button {
-    width: 200px;
-    background: #e7b400;
-    border-radius: 0 10px 10px 0;
-    border: #2c2c2c 1px solid;
-    font-family: Jost sans-serif;
-    font-size: 18px;
-    font-weight: 500;
 }
 
 .block-recipes {
