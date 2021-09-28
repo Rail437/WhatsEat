@@ -1,0 +1,15 @@
+<RCC>
+  <qresource prefix="menu">
+    <file>menu_edit-profile.png</file>
+    <file>menu_close-profile.png</file>
+    <file>menu_help.png</file>
+    <file>menu_profile.png</file>
+    <file>menu_search.png</file>
+  </qresource>
+  <qresource prefix="preview_image">
+    <file>image-recipe.png</file>
+  </qresource>
+  <qresource prefix="feedback">
+    <file>feedback.png</file>
+  </qresource>
+</RCC>
