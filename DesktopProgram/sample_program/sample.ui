@@ -218,37 +218,30 @@ border-bottom-right-radius: 10px;</string>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
-    <widget class="QWidget" name="search_panel" native="true">
+    <widget class="QWidget" name="help_panel" native="true">
      <property name="geometry">
       <rect>
-       <x>5</x>
-       <y>5</y>
-       <width>858</width>
-       <height>99</height>
+       <x>0</x>
+       <y>0</y>
+       <width>868</width>
+       <height>583</height>
       </rect>
      </property>
-     <property name="minimumSize">
-      <size>
-       <width>858</width>
-       <height>99</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>858</width>
-       <height>99</height>
-      </size>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-radius: 10px;
-background-color: rgb(56, 56, 56);</string>
+      <string notr="true">background-color: rgb(56, 56, 56);
+border-radius: 10px;</string>
      </property>
-     <widget class="QLabel" name="label">
+     <widget class="QPushButton" name="feedback_btn">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>22</y>
-        <width>100</width>
+        <x>434</x>
+        <y>542</y>
+        <width>371</width>
         <height>24</height>
        </rect>
       </property>
@@ -256,202 +249,61 @@ background-color: rgb(56, 56, 56);</string>
        <font>
         <family>Times New Roman</family>
         <pointsize>18</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);
-font: 18pt &quot;Times New Roman&quot;;</string>
+       <string notr="true">color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>Поиск:</string>
+       <string>Остались вопросы - напишите нам.</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QPushButton" name="feddback_icon_btn">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>52</y>
-        <width>667</width>
-        <height>32</height>
+        <x>817</x>
+        <y>542</y>
+        <width>36</width>
+        <height>26</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);
-border-top-left-radius: 5px;
-border-bottom-left-radius: 5px;
-border-top-right-radius: 0;
-border-bottom-right-radius: 0;</string>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="../img/menu_images.qrc">
+        <normaloff>:/feedback/feedback.png</normaloff>:/feedback/feedback.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>36</width>
+        <height>26</height>
+       </size>
       </property>
      </widget>
-     <widget class="QPushButton" name="search_recipes">
+     <widget class="QLabel" name="text_area">
       <property name="geometry">
        <rect>
-        <x>676</x>
-        <y>52</y>
-        <width>170</width>
-        <height>32</height>
+        <x>21</x>
+        <y>24</y>
+        <width>826</width>
+        <height>506</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Times New Roman</family>
-        <pointsize>14</pointsize>
-        <weight>50</weight>
-        <bold>false</bold>
+        <pointsize>18</pointsize>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(231, 180, 0);
-border-radius:5px;
-border-top-left-radius: 0;
-border-bottom-left-radius: 0;</string>
+       <string notr="true">color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>Подобрать рецепт</string>
+       <string>Как пользоваться программой.</string>
       </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="list_recipes" native="true">
-     <property name="geometry">
-      <rect>
-       <x>5</x>
-       <y>136</y>
-       <width>858</width>
-       <height>447</height>
-      </rect>
-     </property>
-     <widget class="QWidget" name="recipe" native="true">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>268</width>
-        <height>384</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(56, 56, 56);
-border-radius: 10px;</string>
-      </property>
-      <widget class="QLabel" name="recipe_image">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>11</y>
-         <width>248</width>
-         <height>170</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="../img/menu_images.qrc">:/preview_image/image-recipe.png</pixmap>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QLabel" name="recipe_name">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>197</y>
-         <width>248</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Times New Roman</family>
-         <pointsize>18</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="recipe_des">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>238</y>
-         <width>248</width>
-         <height>140</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Times New Roman</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="recipe_2" native="true">
-      <property name="geometry">
-       <rect>
-        <x>295</x>
-        <y>0</y>
-        <width>268</width>
-        <height>384</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(56, 56, 56);
-border-radius: 10px;</string>
-      </property>
-     </widget>
-     <widget class="QWidget" name="recipe_3" native="true">
-      <property name="geometry">
-       <rect>
-        <x>590</x>
-        <y>0</y>
-        <width>268</width>
-        <height>384</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(56, 56, 56);
-border-radius: 10px;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="load_more">
-      <property name="geometry">
-       <rect>
-        <x>360</x>
-        <y>410</y>
-        <width>150</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Times New Roman</family>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(231, 180, 0);
-border-radius: 5px;</string>
-      </property>
-      <property name="text">
-       <string>Загрузить еще</string>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
       </property>
      </widget>
     </widget>
