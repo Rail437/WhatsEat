@@ -4,7 +4,7 @@ import json
 
 from PyQt5 import QtWidgets
 
-from DesktopProgram.sample.sample_new import Ui_WhatsEat
+from DesktopProgram.sample_program.sample import Ui_WhatsEat
 from DesktopProgram.utils import load_configs, get_address
 
 CONFIG = dict()
