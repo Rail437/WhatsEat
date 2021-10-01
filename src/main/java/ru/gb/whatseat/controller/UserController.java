@@ -22,6 +22,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     @PostMapping("/registration")
     public ResponseEntity<HttpStatus> addUser(UserDto userDto) {
         return userService.saveUser(userDto)?

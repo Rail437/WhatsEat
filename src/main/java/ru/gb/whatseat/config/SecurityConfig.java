@@ -30,13 +30,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/client/**", "/api/**").authenticated()
                 .antMatchers("/reg","/registration").permitAll()
-                .anyRequest().authenticated()
                 .and()
                 .logout()
                 .and()
                 .formLogin()
-                .and().csrf()
-                .disable();//Стандартные страницы login и logout отключены.
+                .and()
+                .csrf().disable();//Стандартные страницы login и logout отключены.
     }
 
     @Bean
