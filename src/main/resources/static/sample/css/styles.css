@@ -20,7 +20,6 @@ a {
 
 .main {
     max-width: 1440px;
-    margin: 0 auto;
     background: #2c2c2c;
     min-height: 100vh;
 }
@@ -76,6 +75,7 @@ h1 {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
+    width: 85vw;
 }
 
 .nav a {
@@ -199,4 +199,39 @@ h1 {
     color: #000000;
     height: 31px;
     width: 150px;
+}
+
+.help-area {
+    background: #383838;
+    border-radius: 10px;
+    height: 70vh;
+}
+
+.how-to-use-program {
+    font-family: 'Jost', sans-serif;
+    font-size: 24px;
+    line-height: 35px;
+    align-items: center;
+    width: 85vw;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+.contact {
+    margin-top: 33%;
+}
+
+.send-message {
+    text-decoration: none;
+    color: #FFFFFF;
+    margin-left: 67vw;
+    white-space: nowrap;
+}
+
+.send-message:hover {
+    color: #FFFFFF;
+}
+
+.send-message__letter {
+    margin-bottom: 1%;
 }
