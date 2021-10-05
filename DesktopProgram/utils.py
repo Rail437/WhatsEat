@@ -39,3 +39,6 @@ def get_response_server(address, items, search=None):
         return f'{address}{items}{search}'
     else:
         return f'{address}{items}'
+
+def get_image_address(image_url):
+    return f'http://185.46.8.32:8080/whatseat/{image_url}'
