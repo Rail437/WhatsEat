@@ -6,4 +6,5 @@ import ru.gb.whatseat.entity.byUser.Role;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
+    Role findByName(String user);
 }

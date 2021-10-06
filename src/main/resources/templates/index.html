@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/sample/css/styles.css?v=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -19,48 +21,20 @@
 
 <body>
 <div class="wrapper">
-    <div class="left-block">
-        <div class="burger"></div>
-        <div class="center-block">
-            <a href="">
-                <div class="icon person-nav"></div>
-            </a>
-            <a href="">
-                <div class="icon sound-nav"></div>
-            </a>
-            <a href="">
-                <div class="icon notes-nav"></div>
-            </a>
-            <a href="">
-                <div class="icon line-nav"></div>
-            </a>
-            <a href="">
-                <div class="icon suitcase-nav"></div>
-            </a>
-            <a href="">
-                <div class="icon user-nav"></div>
-            </a>
-            <a href="">
-                <div class="icon letter-nav"></div>
-            </a>
-            <a href="">
-                <div class="icon money-nav"></div>
-            </a>
+    <div class="menu">
+        <div class="menu__button menu__main_page_button">
+            <a href="#" class="menu__button__link"><img src="../static/sample/img/main_page_menu_button.svg" alt="main page menu button"></a>
         </div>
-        <div class="bottom-block">
-            <a href="">
-                <div class="icon arr-nav"></div>
-            </a>
-            <a href="">
-                <div class="icon track-nav"></div>
-            </a>
-            <a href="">
-                <div class="icon page-nav"></div>
-            </a>
-            <a href="">
-                <div class="pointer-nav"></div>
-            </a>
+        <div class="menu__button menu__personal_page_button">
+            <a href="#" class="menu__button__link"><img src="../static/sample/img/personal_page_menu_button.svg" alt="personal page menu button"></a>
         </div>
+        <div class="menu__button menu__sign_out_button">
+            <a href="#" class="menu__button__link"><img src="../static/sample/img/sign_out_menu_button.svg" alt="sign out menu button"></a>
+        </div>
+        <div class="menu__button menu__help_page_button">
+            <a href="#" class="menu__button__link"><img src="../static/sample/img/help_page_menu_button.svg" alt="help page menu button"></a>
+        </div>
+
     </div>
     <div class="main">
         <div class="main-block">
@@ -72,121 +46,53 @@
                 <div class="info-block">
                     <div class="flex-container">
                         <div class="search-panel">
-                            <label class="search__label" for="search__input">Введите названия продуктов которые имеются у вас:</label>
-                            <div class="search">
-                                <input type="text" id="search__input">
-                                <button type="submit" class="btn-primary">Подобрать рецепт</button>
+                            <label class="search__label" for="search__input">Поиск:</label>
+                            <div class="search row g-0">
+                                <div class="col-9">
+                                    <input class="col-12" type="text" id="search__input">
+                                </div>
+                                <div class="col-3" style="height: 35px">
+                                    <button type="submit" class="btn btn-warning col-11" style="
+                                                                                                font-family: Jost;
+                                                                                                font-size: 18px;
+                                                                                                height: 87%;
+                                                                                                margin-top: -6px;
+                                                                                                line-height: 19px;">
+                                        Подобрать рецепт
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div class="block-recipes">
                             <div class="recipe">
                                 <div class="recipe__image">
-                                    <img src="../static/sample/img/image-recipe.jpg" alt="Image recipe">
+                                    <img src="../static/sample/img/image-recipe.png" alt="Image recipe">
                                 </div>
                                 <div class="recipe__name">
                                     Лазанья классическая с мясом
-                                </div>
-                                <div class="recipe__ingredients">
-                                    <span class="ingredient_quantity"><span class="ingredient">Мясной фарш</span><span class="quantity">600 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Соус болоньезе</span><span class="quantity">600 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Сливочное масло</span><span class="quantity">60 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Пшеничная мука</span><span class="quantity">2,5 ст.л.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Оливковое масло</span><span class="quantity">2 ст.л.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Молоко</span><span class="quantity">750 мл</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Готовые сухие листы лазаньи</span><span class="quantity">10 шт.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Твердый сыр</span><span class="quantity">500 г.</span></span>
                                 </div>
                             </div>
                             <div class="recipe">
                                 <div class="recipe__image">
-                                    <img src="../static/sample/img/image-recipe.jpg" alt="Image recipe">
+                                    <img src="../static/sample/img/image-recipe.png" alt="Image recipe">
                                 </div>
                                 <div class="recipe__name">
                                     Лазанья классическая с мясом
-                                </div>
-                                <div class="recipe__ingredients">
-                                    <span class="ingredient_quantity"><span class="ingredient">Мясной фарш</span><span class="quantity">600 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Соус болоньезе</span><span class="quantity">600 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Сливочное масло</span><span class="quantity">60 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Пшеничная мука</span><span class="quantity">2,5 ст.л.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Оливковое масло</span><span class="quantity">2 ст.л.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Молоко</span><span class="quantity">750 мл</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Готовые сухие листы лазаньи</span><span class="quantity">10 шт.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Твердый сыр</span><span class="quantity">500 г.</span></span>
                                 </div>
                             </div>
                             <div class="recipe">
                                 <div class="recipe__image">
-                                    <img src="../static/sample/img/image-recipe.jpg" alt="Image recipe">
+                                    <img src="../static/sample/img/image-recipe.png" alt="Image recipe">
                                 </div>
                                 <div class="recipe__name">
                                     Лазанья классическая с мясом
                                 </div>
-                                <div class="recipe__ingredients">
-                                    <span class="ingredient_quantity"><span class="ingredient">Мясной фарш</span><span class="quantity">600 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Соус болоньезе</span><span class="quantity">600 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Сливочное масло</span><span class="quantity">60 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Пшеничная мука</span><span class="quantity">2,5 ст.л.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Оливковое масло</span><span class="quantity">2 ст.л.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Молоко</span><span class="quantity">750 мл</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Готовые сухие листы лазаньи</span><span class="quantity">10 шт.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Твердый сыр</span><span class="quantity">500 г.</span></span>
-                                </div>
                             </div>
-                            <div class="recipe">
-                                <div class="recipe__image">
-                                    <img src="../static/sample/img/image-recipe.jpg" alt="Image recipe">
-                                </div>
-                                <div class="recipe__name">
-                                    Лазанья классическая с мясом
-                                </div>
-                                <div class="recipe__ingredients">
-                                    <span class="ingredient_quantity"><span class="ingredient">Мясной фарш</span><span class="quantity">600 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Соус болоньезе</span><span class="quantity">600 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Сливочное масло</span><span class="quantity">60 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Пшеничная мука</span><span class="quantity">2,5 ст.л.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Оливковое масло</span><span class="quantity">2 ст.л.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Молоко</span><span class="quantity">750 мл</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Готовые сухие листы лазаньи</span><span class="quantity">10 шт.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Твердый сыр</span><span class="quantity">500 г.</span></span>
-                                </div>
-                            </div>
-                            <div class="recipe">
-                                <div class="recipe__image">
-                                    <img src="../static/sample/img/image-recipe.jpg" alt="Image recipe">
-                                </div>
-                                <div class="recipe__name">
-                                    Лазанья классическая с мясом
-                                </div>
-                                <div class="recipe__ingredients">
-                                    <span class="ingredient_quantity"><span class="ingredient">Мясной фарш</span><span class="quantity">600 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Соус болоньезе</span><span class="quantity">600 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Сливочное масло</span><span class="quantity">60 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Пшеничная мука</span><span class="quantity">2,5 ст.л.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Оливковое масло</span><span class="quantity">2 ст.л.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Молоко</span><span class="quantity">750 мл</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Готовые сухие листы лазаньи</span><span class="quantity">10 шт.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Твердый сыр</span><span class="quantity">500 г.</span></span>
-                                </div>
-                            </div>
-                            <div class="recipe">
-                                <div class="recipe__image">
-                                    <img src="../static/sample/img/image-recipe.jpg" alt="Image recipe">
-                                </div>
-                                <div class="recipe__name">
-                                    Лазанья классическая с мясом
-                                </div>
-                                <div class="recipe__ingredients">
-                                    <span class="ingredient_quantity"><span class="ingredient">Мясной фарш</span><span class="quantity">600 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Соус болоньезе</span><span class="quantity">600 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Сливочное масло</span><span class="quantity">60 г.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Пшеничная мука</span><span class="quantity">2,5 ст.л.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Оливковое масло</span><span class="quantity">2 ст.л.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Молоко</span><span class="quantity">750 мл</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Готовые сухие листы лазаньи</span><span class="quantity">10 шт.</span></span>
-                                    <span class="ingredient_quantity"><span class="ingredient">Твердый сыр</span><span class="quantity">500 г.</span></span>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="load-more">
+                            <a href="#" class="load-more__link">
+                                Загрузить еще
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -209,5 +115,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script src="../static/sample/js/script.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+        crossorigin="anonymous"></script>
 </body>
 </html>
