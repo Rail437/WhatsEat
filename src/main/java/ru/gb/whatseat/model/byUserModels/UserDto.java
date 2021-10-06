@@ -15,9 +15,9 @@ public class UserDto {
     private String password;
     private String Email;
 
-    public UserDto(UUID id, String name, String login, String password, String mail) {
+    public UserDto(UUID id, String username, String login, String password, String mail) {
         this.id = id;
-        this.username = name;
+        this.username = username;
         this.login = login;
         this.password = password;
         this.Email = mail;
