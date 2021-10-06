@@ -10,14 +10,14 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserDto {
     private UUID id;
-    private String name;
+    private String username;
     private String login;
     private String password;
     private String Email;
 
     public UserDto(UUID id, String name, String login, String password, String mail) {
         this.id = id;
-        this.name = name;
+        this.username = name;
         this.login = login;
         this.password = password;
         this.Email = mail;
@@ -36,7 +36,7 @@ public class UserDto {
     public UserEntity mapToUser() {
         UserEntity user = new UserEntity();
         user.setId(id);
-        user.setUsername(name);
+        user.setUsername(username);
         user.setLogin(login);
         user.setPassword(password);
         user.setEmail(Email);

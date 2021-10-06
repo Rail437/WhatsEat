@@ -10,11 +10,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.gb.whatseat.model.DishModel;
 import ru.gb.whatseat.model.byUserModels.UserDto;
 import ru.gb.whatseat.entity.byUser.Role;
 import ru.gb.whatseat.entity.byUser.UserEntity;
 import ru.gb.whatseat.repository.HistoryRepo;
+import ru.gb.whatseat.repository.RoleRepository;
 import ru.gb.whatseat.repository.UserRepository;
 
 import java.security.Principal;
@@ -28,12 +28,14 @@ import java.util.stream.Collectors;
 public class UserService implements UserDetailsService {
 
     private UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
     private PasswordEncoder bCryptPasswordEncoder;
 
     private HistoryRepo historyRepo;
 
-    public UserService(HistoryRepo historyRepo) {
+    public UserService(RoleRepository roleRepository, HistoryRepo historyRepo) {
+        this.roleRepository = roleRepository;
         this.historyRepo = historyRepo;
     }
 
@@ -71,6 +73,7 @@ public class UserService implements UserDetailsService {
         if (userFromDB != null) {
             return false;
         }
+        saveRole();
         final UUID userId = UUID.randomUUID();
         UserEntity user = userDto.mapToUser();
         user.setId(userId);
@@ -78,6 +81,15 @@ public class UserService implements UserDetailsService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
+    }
+
+    private void saveRole() {
+        if (roleRepository.findByName("USER") == null) {
+            roleRepository.save(new Role(1L, "USER"));
+        }
+        if (roleRepository.findByName("ADMIN") == null) {
+            roleRepository.save(new Role(2L, "ADMIN"));
+        }
     }
 
     public boolean deleteUser(UUID userId) {
