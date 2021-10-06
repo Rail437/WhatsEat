@@ -1,0 +1,67 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Page</title>
+    <meta name="description" content="The HTML5 Herald">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sample/css/styles.css?v=1.0">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="wrapper">
+
+    <div class="main">
+        <div class="main-block">
+            <div class="main-block__upper">
+                <h1>Пободрать блюдо на ужин</h1>
+                <div class="nav">
+                    <a href="#">Книга рецептов</a>
+                </div>
+                <div class="info-block">
+                    <div class="flex-container">
+                        <div class="block-recipes">
+                            <div th:object="${dish}" class="recipe">
+                                <div class="recipe__image">
+<!--                                    <img src="sample/img/image-recipe.jpg" alt="Image recipe">-->
+                                    <img th:src="${dish.getImg()}" alt="Image recipe">
+                                </div>
+                                <div class="recipe__name" th:text="${dish.getTitle()}"></div>
+                                <ul th:text="${dish.getDescription()}">link</ul>
+                                <div th:each="recipe : ${dish.getRecipes()}" >
+                                    <p th:text="${recipe.getProduct().getTitle()}"></p>
+                                    <p th:text="${recipe.getQuantity()}"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script language="javascript">
+
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="sample/js/script.js"></script>
+</body>
+</html>

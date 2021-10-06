@@ -80,27 +80,12 @@
                             </form>
                         </div>
                         <div class="block-recipes">
-                            <div th:each="recipe : ${recipes}" class="recipe">
+                            <div th:each="dish : ${dishes}" class="recipe">
                                     <div class="recipe__image">
-                                        <img src="sample/img/image-recipe.jpg" alt="Image recipe">
+                                        <img th:src="${dish.getImg_path()}" alt="Image recipe">
                                     </div>
-                                    <div class="recipe__name" th:text="${recipe.getTitle()}"></div>
-                                <a href="#" th:text="${recipe.getId()}">link</a>
-                                <!--                                <div>-->
-<!--                                    <ul class="recipe__info">-->
-<!--                                        <li class="recipe__list" th:text="${recipe.getProduct().getTitle()}"></li>-->
-<!--                                    </ul>-->
-<!--                                </div>-->
-<!--                                <div class="recipe__ingredients" th:text="${recipe.getDish().getDescription()}">-->
-<!--                                    <span class="ingredient_quantity"><span class="ingredient">Мясной фарш</span><span class="quantity">600 г.</span></span>-->
-<!--                                    <span class="ingredient_quantity"><span class="ingredient">Соус болоньезе</span><span class="quantity">600 г.</span></span>-->
-<!--                                    <span class="ingredient_quantity"><span class="ingredient">Сливочное масло</span><span class="quantity">60 г.</span></span>-->
-<!--                                    <span class="ingredient_quantity"><span class="ingredient">Пшеничная мука</span><span class="quantity">2,5 ст.л.</span></span>-->
-<!--                                    <span class="ingredient_quantity"><span class="ingredient">Оливковое масло</span><span class="quantity">2 ст.л.</span></span>-->
-<!--                                    <span class="ingredient_quantity"><span class="ingredient">Молоко</span><span class="quantity">750 мл</span></span>-->
-<!--                                    <span class="ingredient_quantity"><span class="ingredient">Готовые сухие листы лазаньи</span><span class="quantity">10 шт.</span></span>-->
-<!--                                    <span class="ingredient_quantity"><span class="ingredient">Твердый сыр</span><span class="quantity">500 г.</span></span>-->
-<!--                                </div>-->
+                                    <div class="recipe__name" th:text="${dish.getTitle()}"></div>
+                                <a th:href="@{/{id}(id = ${dish.getId()})}" >link</a>
                             </div>
                         </div>
                         </div>
