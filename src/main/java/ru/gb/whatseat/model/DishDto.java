@@ -24,4 +24,5 @@ public class DishDto {
                         new ProductModel(recipeEntity.getProduct().getId(),recipeEntity.getProduct().getTitle())
                 )).collect(Collectors.toList());
     }
+
 }

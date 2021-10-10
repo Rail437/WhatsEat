@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.gb.whatseat.entity.DishEntity;
 import ru.gb.whatseat.entity.byUser.UserEntity;
+import ru.gb.whatseat.model.DishDto;
 import ru.gb.whatseat.model.DishModel;
 import ru.gb.whatseat.repository.DishRepo;
 import ru.gb.whatseat.repository.UserRepository;
@@ -39,7 +40,11 @@ public class FavoriteService {
     public List<DishModel> getFavorite(Principal principal) {
         UserEntity user = userRepository.findByLogin(principal.getName());
         return user.getFavoriteDishEntities().stream()
-                .map(DishModel::toModel)
+                .map(dishEntity -> new DishModel(dishEntity.getId(),
+                        dishEntity.getTitle(),
+                        dishEntity.getDescription(),
+                        dishEntity.getIngredients_list(),
+                        dishEntity.getImg_path())   )
                 .collect(Collectors.toList());
     }
 

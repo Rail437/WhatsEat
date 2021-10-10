@@ -114,4 +114,10 @@ public class UserService implements UserDetailsService {
         userRepository.save(userFromDB);
         return true;
     }
+
+    public UserDto getUserDto(Principal principal) {
+        UserDto returnUserDto = UserDto.valueOf(userRepository.findByLogin(principal.getName()));
+        returnUserDto.setPassword("Protected");
+        return returnUserDto;
+    }
 }
