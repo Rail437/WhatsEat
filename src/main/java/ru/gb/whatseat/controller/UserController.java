@@ -29,6 +29,11 @@ public class UserController {
                 new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
+    @GetMapping("/api/v1/getUser")
+    public UserDto getUser(Principal principal){
+        return userService.getUserDto(principal);
+    }
+
     @GetMapping("/client/test")
     public String test(Principal principal) {
         return principal.toString();

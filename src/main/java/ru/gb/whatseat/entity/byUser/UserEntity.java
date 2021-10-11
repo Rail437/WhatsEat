@@ -25,7 +25,10 @@ public class UserEntity {
     private String email;
 
 
-    public UserEntity() {}
+    public UserEntity() {
+        this.favoriteDishEntities = new ArrayList<>();
+        this.deferrerDishEntities = new ArrayList<>();
+    }
 
     @ManyToMany
     @JoinTable(name = "users_roles",
@@ -55,6 +58,7 @@ public class UserEntity {
     public void setFavoriteDishEntities(List<DishEntity> dishEntities) {
         this.favoriteDishEntities.addAll(dishEntities);
     }
+
     public void setDeferrerDishEntities(List<DishEntity> dishEntities) {
         this.deferrerDishEntities.addAll(dishEntities);
     }

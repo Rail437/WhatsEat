@@ -2,10 +2,7 @@ package ru.gb.whatseat.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.gb.whatseat.model.DishModel;
 import ru.gb.whatseat.service.FavoriteService;
 
@@ -23,7 +20,7 @@ public class FavoriteController {
     }
 
     @PostMapping("/doFavorite")
-    public HttpStatus doFavorit(Principal principal, DishModel dishModel) {
+    public HttpStatus doFavorit(Principal principal,@RequestBody DishModel dishModel) {
         if (principal !=null & dishModel.getId() != null) {
             Long id = dishModel.getId();
             return favoriteService.doFavorite(principal,id)?
@@ -40,7 +37,7 @@ public class FavoriteController {
         return null;
     }
     @PostMapping("/deleteFavorite")
-    public HttpStatus deleteFavorite(Principal principal, DishModel dishModel) {
+    public HttpStatus deleteFavorite(Principal principal,@RequestBody DishModel dishModel) {
         if (principal !=null & dishModel.getId() != null) {
             Long id = dishModel.getId();
             return favoriteService.delFavorite(principal,id)?
@@ -53,7 +50,7 @@ public class FavoriteController {
 
 
     @PostMapping("/doDeferrer")
-    public HttpStatus doDeferrer(Principal principal, DishModel dishModel) {
+    public HttpStatus doDeferrer(Principal principal,@RequestBody DishModel dishModel) {
         if (principal !=null & dishModel.getId() != null) {
             Long id = dishModel.getId();
             return favoriteService.doDeferrer(principal,id)?
@@ -71,7 +68,7 @@ public class FavoriteController {
     }
 
     @PostMapping("/deleteDeferrer")
-    public HttpStatus deleteDeferrer(Principal principal, DishModel dishModel) {
+    public HttpStatus deleteDeferrer(Principal principal,@RequestBody DishModel dishModel) {
         if (principal !=null & dishModel.getId() != null) {
             Long id = dishModel.getId();
             return favoriteService.delDeferrer(principal,id)?
