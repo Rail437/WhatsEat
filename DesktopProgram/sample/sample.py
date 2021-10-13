@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\DesktopProgram\sample_program\sample.ui'
+# Form implementation generated from reading ui file '.\DesktopProgram\sample\sample.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -12,7 +12,6 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 import DesktopProgram.img.menu_images_rc
-from DesktopProgram.sample_program.test_frime import Ui_Form
 
 
 class Ui_WhatsEat(object):
@@ -36,7 +35,6 @@ class Ui_WhatsEat(object):
         self.menu_bar.setStyleSheet("background-color: rgb(56, 56, 56);\n"
                                     "border-bottom-right-radius: 10px;")
         self.menu_bar.setObjectName("menu_bar")
-        # self.menu_bar.mousePressEvent(QtGui.QMouseEvent())
         self.menu_search = QtWidgets.QPushButton(self.menu_bar)
         self.menu_search.setGeometry(QtCore.QRect(5, 11, 50, 50))
         self.menu_search.setText("")
@@ -96,6 +94,5 @@ class Ui_WhatsEat(object):
         WhatsEat.setCentralWidget(self.centralwidget)
         WhatsEat.setWindowTitle("WhatsEat")
         QtCore.QMetaObject.connectSlotsByName(WhatsEat)
-        self.recipe = Ui_Form()
 
 

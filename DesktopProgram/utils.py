@@ -27,11 +27,11 @@ def get_response(address, response):
 
 
 def get_address(CONFIG):
-    return f'http://{CONFIG["DEFAULT_IP_ADDRESS"]}:{CONFIG["DEFAULT_PORT"]}/whatseat/api/v1/'
+    return f'http://{CONFIG["DEFAULT_IP_ADDRESS"]}:{CONFIG["DEFAULT_PORT"]}/whatseat/'
 
 
-def get_items_response(items='products'):
-    return f'dishes?{items}='
+def get_items_response_recipes(items='products'):
+    return f'api/v1/dishes?{items}='
 
 
 def get_response_server(address, items, search=None):
